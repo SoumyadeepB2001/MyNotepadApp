@@ -18,4 +18,16 @@ javac notepad.java
 
 java notepad
 
-  
+## Features
+
+ Displays the current file name on the title bar.
+ 
+ File tab- New File, Open File, Save, Save As, Print, Close.
+ 
+ Edit tab- Copy, Cut, Paste, Undo, Redo, Find, Replace/Replace All, Date/Time.
+ 
+ Format tab- Wrap Text, Font, Font Style, Font Size, Background Color, Font Color.
+ 
+ Help- Contact Me, About.
+ 
+ 
