@@ -21,14 +21,15 @@ import javax.swing.undo.UndoManager;
 public class Notepad extends javax.swing.JFrame {
 
     File filename; // this variable stores the current file in usage
-    int n, z = 0;
-    String s = "";
+    int n, z = 0; // int n and int z is used in 'Find' operation
+    String s = "", s2 = ""; // s is used to store the 'Find' text value and s2 is used to store the 'Replace' text value                          
     Font f1 = new Font("Tahoma", Font.PLAIN, 13); // default font in the beginning
     String st = "Tahoma"; // default font Tahoma
     String style = "p"; // default font style- Plain
     int size = 13; // default font size in the beginning
 
-    public Notepad() {
+    public Notepad() 
+    {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setTitle("Untitled");
@@ -37,7 +38,7 @@ public class Notepad extends javax.swing.JFrame {
         rt.setVisible(false);
         replacebut.setVisible(false);
         replaceall.setVisible(false);
-        t.getDocument().addUndoableEditListener((UndoableEditEvent e) -> {
+        t.getDocument().addUndoableEditListener((UndoableEditEvent e) -> { //For Undo and Redo
             um.addEdit(e.getEdit());
         });
     }
@@ -49,98 +50,98 @@ public class Notepad extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane2 = new javax.swing.JScrollPane();
-        t = new javax.swing.JTextArea();
-        panel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        ft = new javax.swing.JTextField();
-        replab = new javax.swing.JLabel();
-        rt = new javax.swing.JTextField();
-        matchcheck = new javax.swing.JCheckBox();
-        closebut = new javax.swing.JButton();
-        findbut = new javax.swing.JButton();
-        replacebut = new javax.swing.JButton();
-        replaceall = new javax.swing.JButton();
-        menuBar = new javax.swing.JMenuBar();
-        file = new javax.swing.JMenu();
-        newfile = new javax.swing.JMenuItem();
-        open = new javax.swing.JMenuItem();
-        save = new javax.swing.JMenuItem();
-        saveas = new javax.swing.JMenuItem();
-        print = new javax.swing.JMenuItem();
-        close = new javax.swing.JMenuItem();
-        edit = new javax.swing.JMenu();
-        copy = new javax.swing.JMenuItem();
-        cut = new javax.swing.JMenuItem();
-        paste = new javax.swing.JMenuItem();
-        undomenu = new javax.swing.JMenuItem();
-        redomenu = new javax.swing.JMenuItem();
-        find = new javax.swing.JMenuItem();
-        replace = new javax.swing.JMenuItem();
-        dateandtime = new javax.swing.JMenuItem();
-        format = new javax.swing.JMenu();
-        cb = new javax.swing.JCheckBoxMenuItem();
-        font = new javax.swing.JMenu();
-        algerian = new javax.swing.JMenuItem();
-        arial = new javax.swing.JMenuItem();
-        calibri = new javax.swing.JMenuItem();
-        cambria = new javax.swing.JMenuItem();
-        segoeui = new javax.swing.JMenuItem();
-        tahoma = new javax.swing.JMenuItem();
-        tnr = new javax.swing.JMenuItem();
-        verdana = new javax.swing.JMenuItem();
-        fontStyle = new javax.swing.JMenu();
-        plain = new javax.swing.JMenuItem();
-        bold = new javax.swing.JMenuItem();
-        italics = new javax.swing.JMenuItem();
-        bolditalics = new javax.swing.JMenuItem();
-        fontSize = new javax.swing.JMenu();
-        size8 = new javax.swing.JMenuItem();
-        size9 = new javax.swing.JMenuItem();
-        size10 = new javax.swing.JMenuItem();
-        size11 = new javax.swing.JMenuItem();
-        size12 = new javax.swing.JMenuItem();
-        size13 = new javax.swing.JMenuItem();
-        size14 = new javax.swing.JMenuItem();
-        size16 = new javax.swing.JMenuItem();
-        size18 = new javax.swing.JMenuItem();
-        size20 = new javax.swing.JMenuItem();
-        size24 = new javax.swing.JMenuItem();
-        size26 = new javax.swing.JMenuItem();
-        size28 = new javax.swing.JMenuItem();
-        size36 = new javax.swing.JMenuItem();
-        size48 = new javax.swing.JMenuItem();
-        size72 = new javax.swing.JMenuItem();
-        bgc = new javax.swing.JMenu();
-        bluebgc = new javax.swing.JMenuItem();
-        cyanbgc = new javax.swing.JMenuItem();
-        magentabgc = new javax.swing.JMenuItem();
-        yellowbgc = new javax.swing.JMenuItem();
-        greenbgc = new javax.swing.JMenuItem();
-        redbgc = new javax.swing.JMenuItem();
-        pinkbgc = new javax.swing.JMenuItem();
-        orangebgc = new javax.swing.JMenuItem();
-        blackbgc = new javax.swing.JMenuItem();
-        graybgc = new javax.swing.JMenuItem();
-        lgraybgc = new javax.swing.JMenuItem();
-        dgraybgc = new javax.swing.JMenuItem();
-        whitebgc = new javax.swing.JMenuItem();
-        fontcol = new javax.swing.JMenu();
-        bluefc = new javax.swing.JMenuItem();
-        cyanfc = new javax.swing.JMenuItem();
-        magentafc = new javax.swing.JMenuItem();
-        yellowfc = new javax.swing.JMenuItem();
-        greenfc = new javax.swing.JMenuItem();
-        redfc = new javax.swing.JMenuItem();
-        pinkfc = new javax.swing.JMenuItem();
-        orangefc = new javax.swing.JMenuItem();
-        blackfc = new javax.swing.JMenuItem();
-        grayfc = new javax.swing.JMenuItem();
-        lgrayfc = new javax.swing.JMenuItem();
-        dgrayfc = new javax.swing.JMenuItem();
-        whitefc = new javax.swing.JMenuItem();
-        help = new javax.swing.JMenu();
-        contact = new javax.swing.JMenuItem();
-        about = new javax.swing.JMenuItem();
+        t = new javax.swing.JTextArea(); // The main text area
+        panel = new javax.swing.JPanel(); // The main panel
+        Findlab = new javax.swing.JLabel(); // Find Label of Find and Replace box
+        ft = new javax.swing.JTextField(); // Find text box
+        replab = new javax.swing.JLabel(); // Replace box label
+        rt = new javax.swing.JTextField(); // Replace text box
+        matchcheck = new javax.swing.JCheckBox(); // Match Case checkbox of Find and Replace box
+        closebut = new javax.swing.JButton(); // Close Button of Find and Replace box
+        findbut = new javax.swing.JButton(); // Find Button of the Find and Replace box (Not of the menu)
+        replacebut = new javax.swing.JButton(); // Replace Button of the Find and Replace box
+        replaceall = new javax.swing.JButton(); // Replace All Button of the Find and Replace box
+        menuBar = new javax.swing.JMenuBar(); // Menu Bar
+        file = new javax.swing.JMenu(); // File Menu
+        newfile = new javax.swing.JMenuItem(); // sub-menu
+        open = new javax.swing.JMenuItem(); // sub-menu
+        save = new javax.swing.JMenuItem(); // sub-menu
+        saveas = new javax.swing.JMenuItem(); // sub-menu
+        print = new javax.swing.JMenuItem(); // sub-menu
+        close = new javax.swing.JMenuItem(); // sub-menu
+        edit = new javax.swing.JMenu(); // Edit Menu
+        copy = new javax.swing.JMenuItem(); // sub-menu
+        cut = new javax.swing.JMenuItem(); // sub-menu
+        paste = new javax.swing.JMenuItem(); // sub-menu
+        undomenu = new javax.swing.JMenuItem(); // sub-menu
+        redomenu = new javax.swing.JMenuItem(); // sub-menu
+        find = new javax.swing.JMenuItem(); // sub-menu
+        replace = new javax.swing.JMenuItem(); // sub-menu
+        dateandtime = new javax.swing.JMenuItem(); // sub-menu
+        format = new javax.swing.JMenu(); // Format Menu
+        cb = new javax.swing.JCheckBoxMenuItem(); // Wrap text sub-menu checkbox
+        font = new javax.swing.JMenu(); // sub-menu
+        algerian = new javax.swing.JMenuItem(); // sub-menu font
+        arial = new javax.swing.JMenuItem(); // sub-menu font
+        calibri = new javax.swing.JMenuItem(); // sub-menu font
+        cambria = new javax.swing.JMenuItem(); // sub-menu font
+        segoeui = new javax.swing.JMenuItem(); // sub-menu font
+        tahoma = new javax.swing.JMenuItem(); // sub-menu font
+        tnr = new javax.swing.JMenuItem(); // sub-menu font Times New Roman
+        verdana = new javax.swing.JMenuItem(); // sub-menu font
+        fontStyle = new javax.swing.JMenu(); // sub-menu
+        plain = new javax.swing.JMenuItem(); // sub-menu font style
+        bold = new javax.swing.JMenuItem(); // sub-menu font style
+        italics = new javax.swing.JMenuItem(); // sub-menu font style
+        bolditalics = new javax.swing.JMenuItem(); // sub-menu font style
+        fontSize = new javax.swing.JMenu(); // sub-menu
+        size8 = new javax.swing.JMenuItem(); // Font Size
+        size9 = new javax.swing.JMenuItem(); // Font Size
+        size10 = new javax.swing.JMenuItem(); // Font Size
+        size11 = new javax.swing.JMenuItem(); // Font Size
+        size12 = new javax.swing.JMenuItem(); // Font Size
+        size13 = new javax.swing.JMenuItem(); // Font Size
+        size14 = new javax.swing.JMenuItem(); // Font Size
+        size16 = new javax.swing.JMenuItem(); // Font Size
+        size18 = new javax.swing.JMenuItem(); // Font Size
+        size20 = new javax.swing.JMenuItem(); // Font Size
+        size24 = new javax.swing.JMenuItem(); // Font Size
+        size26 = new javax.swing.JMenuItem(); // Font Size
+        size28 = new javax.swing.JMenuItem(); // Font Size
+        size36 = new javax.swing.JMenuItem(); // Font Size
+        size48 = new javax.swing.JMenuItem(); // Font Size
+        size72 = new javax.swing.JMenuItem(); // Font Size
+        bgc = new javax.swing.JMenu(); // Background Color sub-menu
+        bluebgc = new javax.swing.JMenuItem(); // Background color option
+        cyanbgc = new javax.swing.JMenuItem(); // Background color option
+        magentabgc = new javax.swing.JMenuItem(); // Background color option
+        yellowbgc = new javax.swing.JMenuItem(); // Background color option
+        greenbgc = new javax.swing.JMenuItem(); // Background color option
+        redbgc = new javax.swing.JMenuItem(); // Background color option
+        pinkbgc = new javax.swing.JMenuItem(); // Background color option
+        orangebgc = new javax.swing.JMenuItem(); // Background color option
+        blackbgc = new javax.swing.JMenuItem(); // Background color option
+        graybgc = new javax.swing.JMenuItem(); // Background color option
+        lgraybgc = new javax.swing.JMenuItem(); // Background color option
+        dgraybgc = new javax.swing.JMenuItem(); // Background color option
+        whitebgc = new javax.swing.JMenuItem(); // Background color option
+        fontcol = new javax.swing.JMenu(); // Font Color sub-menu
+        bluefc = new javax.swing.JMenuItem(); // Font color option
+        cyanfc = new javax.swing.JMenuItem(); // Font color option
+        magentafc = new javax.swing.JMenuItem(); // Font color option
+        yellowfc = new javax.swing.JMenuItem(); // Font color option
+        greenfc = new javax.swing.JMenuItem(); // Font color option
+        redfc = new javax.swing.JMenuItem(); // Font color option
+        pinkfc = new javax.swing.JMenuItem(); // Font color option
+        orangefc = new javax.swing.JMenuItem(); // Font color option
+        blackfc = new javax.swing.JMenuItem(); // Font color option
+        grayfc = new javax.swing.JMenuItem(); // Font color option
+        lgrayfc = new javax.swing.JMenuItem(); // Font color option
+        dgrayfc = new javax.swing.JMenuItem(); // Font color option
+        whitefc = new javax.swing.JMenuItem(); // Font color option
+        help = new javax.swing.JMenu(); // Help Menu
+        contact = new javax.swing.JMenuItem(); // Contact Me sub-menu
+        about = new javax.swing.JMenuItem(); // About sub-menu
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setIconImages(null);
@@ -160,8 +161,8 @@ public class Notepad extends javax.swing.JFrame {
         t.setMargin(new java.awt.Insets(0, 0, 0, 0));
         jScrollPane2.setViewportView(t);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14));
-        jLabel1.setText("Find");
+        Findlab.setFont(new java.awt.Font("Tahoma", 1, 14));
+        Findlab.setText("Find");
 
         ft.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -220,7 +221,7 @@ public class Notepad extends javax.swing.JFrame {
         panel.setLayout(panelLayout);
         panelLayout.setHorizontalGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panelLayout.createSequentialGroup().addContainerGap()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41,
+                        .addComponent(Findlab, javax.swing.GroupLayout.PREFERRED_SIZE, 41,
                                 javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ft, javax.swing.GroupLayout.PREFERRED_SIZE, 109,
@@ -249,7 +250,7 @@ public class Notepad extends javax.swing.JFrame {
                                 .addComponent(closebut, javax.swing.GroupLayout.DEFAULT_SIZE,
                                         javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(ft)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27,
+                                .addComponent(Findlab, javax.swing.GroupLayout.PREFERRED_SIZE, 27,
                                         javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(findbut, javax.swing.GroupLayout.DEFAULT_SIZE,
                                         javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -911,22 +912,22 @@ public class Notepad extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void copyActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_copyActionPerformed
+    private void copyActionPerformed(java.awt.event.ActionEvent evt) {// event_copyActionPerformed
 
         t.copy();
     }// event_copyActionPerformed
 
-    private void cutActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_cutActionPerformed
+    private void cutActionPerformed(java.awt.event.ActionEvent evt) {// event_cutActionPerformed
 
         t.cut();
     }// event_cutActionPerformed
 
-    private void pasteActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_pasteActionPerformed
+    private void pasteActionPerformed(java.awt.event.ActionEvent evt) {// event_pasteActionPerformed
 
         t.paste();
     }// event_pasteActionPerformed
 
-    private void contactActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_contactActionPerformed
+    private void contactActionPerformed(java.awt.event.ActionEvent evt) {// event_contactActionPerformed
 
         try {
             Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler file:https://twitter.com/SoumyadeepB2001");
@@ -935,19 +936,19 @@ public class Notepad extends javax.swing.JFrame {
         }
     }// event_contactActionPerformed
 
-    private void findActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_findActionPerformed
+    private void findActionPerformed(java.awt.event.ActionEvent evt) {// event_findActionPerformed
 
         panel.setVisible(true);
         ft.requestFocus();
     }// event_findActionPerformed
 
-    private void aboutActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_aboutActionPerformed
+    private void aboutActionPerformed(java.awt.event.ActionEvent evt) {// event_aboutActionPerformed
 
         JOptionPane.showMessageDialog(null,
-                "My Notepad Version: 2.0.1\nCreated by Soumyadeep Banerjee\nBSc. (Hons) Computer Science, 1st Year");
+                "My Notepad Version: 2.0.2\nCreated by Soumyadeep Banerjee\nBSc. (Hons) Computer Science, 1st Year");
     }// event_aboutActionPerformed
 
-    private void closeActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_closeActionPerformed
+    private void closeActionPerformed(java.awt.event.ActionEvent evt) {// event_closeActionPerformed
 
         int r = JOptionPane.showConfirmDialog(null,
                 "Do you want to exit the application? All unsaved changes will be lost.", "Exit",
@@ -956,7 +957,7 @@ public class Notepad extends javax.swing.JFrame {
             System.exit(0);
     }// event_closeActionPerformed
 
-    private void closebutActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_closebutActionPerformed
+    private void closebutActionPerformed(java.awt.event.ActionEvent evt) {// event_closebutActionPerformed
 
         panel.setVisible(false);
         replab.setVisible(false);
@@ -966,7 +967,7 @@ public class Notepad extends javax.swing.JFrame {
 
     }// event_closebutActionPerformed
 
-    private void replaceActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_replaceActionPerformed
+    private void replaceActionPerformed(java.awt.event.ActionEvent evt) {// event_replaceActionPerformed
 
         panel.setVisible(true);
         replab.setVisible(true);
@@ -977,7 +978,7 @@ public class Notepad extends javax.swing.JFrame {
         replaceall.setVisible(true);
     }// event_replaceActionPerformed
 
-    private void printActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_printActionPerformed
+    private void printActionPerformed(java.awt.event.ActionEvent evt) {// event_printActionPerformed
         try {
 
             t.print();
@@ -986,33 +987,18 @@ public class Notepad extends javax.swing.JFrame {
         }
     }// event_printActionPerformed
 
-    private void openActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_openActionPerformed
-
+    private void openActionPerformed(java.awt.event.ActionEvent evt) {// Opens a specific .txt file and writes its contents in the JTextArea t                                                                    
         JFileChooser j = new JFileChooser();
         int r = j.showOpenDialog(null);
         if (r == JFileChooser.APPROVE_OPTION) {
             File fi = new File(j.getSelectedFile().getAbsolutePath());
             filename = fi;
             try {
-                // String
-                String s1 = "", sl = "";
-
-                // File reader
                 FileReader fr = new FileReader(fi);
-
-                // Buffered reader
                 BufferedReader br = new BufferedReader(fr);
-
-                // Initilize sl
-                sl = br.readLine();
-
-                // Take the input from the file
-                while ((s1 = br.readLine()) != null) {
-                    sl = sl + "\n" + s1;
-                }
-
-                // Set the text
-                t.setText(sl);
+                t.read(br, null);
+                br.close();
+                t.requestFocus();
                 this.setTitle(filename.getName());
             } catch (Exception ex) {
                 Logger.getLogger(Notepad.class.getName()).log(Level.SEVERE, null, ex);
@@ -1021,8 +1007,10 @@ public class Notepad extends javax.swing.JFrame {
 
     }// event_openActionPerformed
 
-    private void newfileActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_newfileActionPerformed
-        // TODO add your handling code here
+    private void newfileActionPerformed(java.awt.event.ActionEvent evt) {// event_newfileActionPerformed
+
+        // Opens a new file and filename=null (filename stores the current file in
+        // usage)
         int YesOrNo = JOptionPane.showConfirmDialog(null, "Do you want to create a new file?", "New File",
                 JOptionPane.YES_NO_OPTION);
         if (YesOrNo == 0) {
@@ -1032,7 +1020,7 @@ public class Notepad extends javax.swing.JFrame {
         }
     }// event_newfileActionPerformed
 
-    private void findbutActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_findbutActionPerformed
+    private void findbutActionPerformed(java.awt.event.ActionEvent evt) {// finds a particular string
 
         if (t.getText().length() != 0 && ft.getText().length() != 0 && matchcheck.isSelected()) {
             s = ft.getText();
@@ -1046,7 +1034,7 @@ public class Notepad extends javax.swing.JFrame {
                 } else
                     t.select(n, n + s.length());
 
-                n = t.getText().indexOf(s, (n + s.length())); // fromindexof
+                n = t.getText().indexOf(s, (n + s.length())); // from indexof
 
                 if (n < 0)
                     n = t.getText().indexOf(s);
@@ -1054,7 +1042,7 @@ public class Notepad extends javax.swing.JFrame {
         } else if (t.getText().length() != 0 && ft.getText().length() != 0 && !matchcheck.isSelected()) {
             s = ft.getText().toLowerCase();
             if (!t.getText().toLowerCase().contains(s))
-                JOptionPane.showMessageDialog(null, "Not Found");
+                JOptionPane.showMessageDialog(null, "Search key not found");
             else {
                 t.requestFocus();
                 if (z == 0) {
@@ -1098,156 +1086,156 @@ public class Notepad extends javax.swing.JFrame {
         }
     }
 
-    private void saveasActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_saveasActionPerformed
+    private void saveasActionPerformed(java.awt.event.ActionEvent evt) {// event_saveasActionPerformed
 
         savefile();
     }// event_saveasActionPerformed
 
-    private void undomenuActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_undomenuActionPerformed
+    private void undomenuActionPerformed(java.awt.event.ActionEvent evt) {// event_undomenuActionPerformed
 
         um.undo();
     }// event_undomenuActionPerformed
 
-    private void redomenuActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_redomenuActionPerformed
+    private void redomenuActionPerformed(java.awt.event.ActionEvent evt) {// event_redomenuActionPerformed
 
         um.redo();
     }// event_redomenuActionPerformed
 
-    private void bluebgcActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_bluebgcActionPerformed
+    private void bluebgcActionPerformed(java.awt.event.ActionEvent evt) {// event_bluebgcActionPerformed
 
         t.setBackground(Color.blue);
     }// event_bluebgcActionPerformed
 
-    private void yellowbgcActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_yellowbgcActionPerformed
+    private void yellowbgcActionPerformed(java.awt.event.ActionEvent evt) {// event_yellowbgcActionPerformed
 
         t.setBackground(Color.yellow);
     }// event_yellowbgcActionPerformed
 
-    private void redbgcActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_redbgcActionPerformed
+    private void redbgcActionPerformed(java.awt.event.ActionEvent evt) {// event_redbgcActionPerformed
 
         t.setBackground(Color.red);
     }// event_redbgcActionPerformed
 
-    private void greenbgcActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_greenbgcActionPerformed
+    private void greenbgcActionPerformed(java.awt.event.ActionEvent evt) {// event_greenbgcActionPerformed
 
         t.setBackground(Color.green);
     }// event_greenbgcActionPerformed
 
-    private void pinkbgcActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_pinkbgcActionPerformed
+    private void pinkbgcActionPerformed(java.awt.event.ActionEvent evt) {// event_pinkbgcActionPerformed
 
         t.setBackground(Color.pink);
     }// event_pinkbgcActionPerformed
 
-    private void blackbgcActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_blackbgcActionPerformed
+    private void blackbgcActionPerformed(java.awt.event.ActionEvent evt) {// event_blackbgcActionPerformed
 
         t.setBackground(Color.black);
     }// event_blackbgcActionPerformed
 
-    private void whitebgcActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_whitebgcActionPerformed
+    private void whitebgcActionPerformed(java.awt.event.ActionEvent evt) {// event_whitebgcActionPerformed
 
         t.setBackground(Color.white);
     }// event_whitebgcActionPerformed
 
-    private void orangebgcActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_orangebgcActionPerformed
+    private void orangebgcActionPerformed(java.awt.event.ActionEvent evt) {// event_orangebgcActionPerformed
 
         t.setBackground(Color.orange);
     }// event_orangebgcActionPerformed
 
-    private void cyanbgcActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_cyanbgcActionPerformed
+    private void cyanbgcActionPerformed(java.awt.event.ActionEvent evt) {// event_cyanbgcActionPerformed
 
         t.setBackground(Color.cyan);
     }// event_cyanbgcActionPerformed
 
-    private void magentabgcActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_magentabgcActionPerformed
+    private void magentabgcActionPerformed(java.awt.event.ActionEvent evt) {// event_magentabgcActionPerformed
 
         t.setBackground(Color.magenta);
     }// event_magentabgcActionPerformed
 
-    private void graybgcActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_graybgcActionPerformed
+    private void graybgcActionPerformed(java.awt.event.ActionEvent evt) {// event_graybgcActionPerformed
 
         t.setBackground(Color.gray);
     }// event_graybgcActionPerformed
 
-    private void lgraybgcActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_lgraybgcActionPerformed
+    private void lgraybgcActionPerformed(java.awt.event.ActionEvent evt) {// event_lgraybgcActionPerformed
 
         t.setBackground(Color.LIGHT_GRAY);
     }// event_lgraybgcActionPerformed
 
-    private void dgraybgcActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_dgraybgcActionPerformed
+    private void dgraybgcActionPerformed(java.awt.event.ActionEvent evt) {// event_dgraybgcActionPerformed
 
         t.setBackground(Color.DARK_GRAY);
     }// event_dgraybgcActionPerformed
 
-    private void bluefcActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_bluefcActionPerformed
+    private void bluefcActionPerformed(java.awt.event.ActionEvent evt) {// event_bluefcActionPerformed
 
         t.setForeground(Color.blue);
     }// event_bluefcActionPerformed
 
-    private void cyanfcActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_cyanfcActionPerformed
+    private void cyanfcActionPerformed(java.awt.event.ActionEvent evt) {// event_cyanfcActionPerformed
 
         t.setForeground(Color.cyan);
     }// event_cyanfcActionPerformed
 
-    private void magentafcActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_magentafcActionPerformed
+    private void magentafcActionPerformed(java.awt.event.ActionEvent evt) {// event_magentafcActionPerformed
 
         t.setForeground(Color.magenta);
     }// event_magentafcActionPerformed
 
-    private void yellowfcActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_yellowfcActionPerformed
+    private void yellowfcActionPerformed(java.awt.event.ActionEvent evt) {// event_yellowfcActionPerformed
 
         t.setForeground(Color.yellow);
     }// event_yellowfcActionPerformed
 
-    private void greenfcActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_greenfcActionPerformed
+    private void greenfcActionPerformed(java.awt.event.ActionEvent evt) {// event_greenfcActionPerformed
 
         t.setForeground(Color.green);
     }// event_greenfcActionPerformed
 
-    private void redfcActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_redfcActionPerformed
+    private void redfcActionPerformed(java.awt.event.ActionEvent evt) {// event_redfcActionPerformed
 
         t.setForeground(Color.red);
     }// event_redfcActionPerformed
 
-    private void pinkfcActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_pinkfcActionPerformed
+    private void pinkfcActionPerformed(java.awt.event.ActionEvent evt) {// event_pinkfcActionPerformed
 
         t.setForeground(Color.pink);
     }// event_pinkfcActionPerformed
 
-    private void orangefcActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_orangefcActionPerformed
+    private void orangefcActionPerformed(java.awt.event.ActionEvent evt) {// event_orangefcActionPerformed
 
         t.setForeground(Color.orange);
     }// event_orangefcActionPerformed
 
-    private void blackfcActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_blackfcActionPerformed
+    private void blackfcActionPerformed(java.awt.event.ActionEvent evt) {// event_blackfcActionPerformed
 
         t.setForeground(Color.black);
     }// event_blackfcActionPerformed
 
-    private void grayfcActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_grayfcActionPerformed
+    private void grayfcActionPerformed(java.awt.event.ActionEvent evt) {// event_grayfcActionPerformed
 
         t.setForeground(Color.gray);
     }// event_grayfcActionPerformed
 
-    private void lgrayfcActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_lgrayfcActionPerformed
+    private void lgrayfcActionPerformed(java.awt.event.ActionEvent evt) {// event_lgrayfcActionPerformed
 
         t.setForeground(Color.LIGHT_GRAY);
     }// event_lgrayfcActionPerformed
 
-    private void dgrayfcActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_dgrayfcActionPerformed
+    private void dgrayfcActionPerformed(java.awt.event.ActionEvent evt) {// event_dgrayfcActionPerformed
 
         t.setForeground(Color.DARK_GRAY);
     }// event_dgrayfcActionPerformed
 
-    private void whitefcActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_whitefcActionPerformed
+    private void whitefcActionPerformed(java.awt.event.ActionEvent evt) {// event_whitefcActionPerformed
 
         t.setForeground(Color.white);
     }// event_whitefcActionPerformed
 
-    private void matchcheckActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_matchcheckActionPerformed
+    private void matchcheckActionPerformed(java.awt.event.ActionEvent evt) {// event_matchcheckActionPerformed
 
     }// event_matchcheckActionPerformed
 
-    private void plainActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_plainActionPerformed
+    private void plainActionPerformed(java.awt.event.ActionEvent evt) {// event_plainActionPerformed
 
         style = "p";
         setFont();
@@ -1272,7 +1260,7 @@ public class Notepad extends javax.swing.JFrame {
         t.setFont(f1);
     }
 
-    private void cbActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_cbActionPerformed
+    private void cbActionPerformed(java.awt.event.ActionEvent evt) {// event_cbActionPerformed
 
         if (cb.isSelected()) {
             t.setLineWrap(true);
@@ -1283,33 +1271,35 @@ public class Notepad extends javax.swing.JFrame {
         }
     }// event_cbActionPerformed
 
-    private void ftKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_ftKeyPressed
+    private void ftKeyPressed(java.awt.event.KeyEvent evt) {// event_ftKeyPressed
 
         z = 0;
         n = 0;
     }// event_ftKeyPressed
 
-    private void replacebutActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_replacebutActionPerformed
+    private void replacebutActionPerformed(java.awt.event.ActionEvent evt) {// event_replacebutActionPerformed
 
-        if (ft.getText().length() > 0 && rt.getText().length() > 0 && t.getSelectionStart() - t.getSelectionEnd() != 0)
-            t.replaceRange(rt.getText(), t.getSelectionStart(), t.getSelectionEnd());
+        s2 = rt.getText();
+        if (ft.getText().length() > 0 && t.getSelectionStart() - t.getSelectionEnd() != 0)
+            t.replaceRange(s2, t.getSelectionStart(), t.getSelectionEnd());
         else
             JOptionPane.showMessageDialog(null, "Nothing to search and replace");
     }// event_replacebutActionPerformed
 
-    private void boldActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_boldActionPerformed
+    private void boldActionPerformed(java.awt.event.ActionEvent evt) {// event_boldActionPerformed
 
         style = "b";
         setFont();
     }// event_boldActionPerformed
 
-    private void replaceallActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_replaceallActionPerformed
+    private void replaceallActionPerformed(java.awt.event.ActionEvent evt) {// event_replaceallActionPerformed
 
-        if (ft.getText().length() > 0 && t.getText().length() > 0 && rt.getText().length() > 0
-                && matchcheck.isSelected()) {
+        s2 = rt.getText();
+        if (ft.getText().length() > 0 && t.getText().length() > 0 && matchcheck.isSelected()) {
             s = ft.getText();
+
             if (!t.getText().contains(s))
-                JOptionPane.showMessageDialog(null, "Not Found");
+                JOptionPane.showMessageDialog(null, "Search key not found");
             else {
                 while (true) {
                     t.requestFocus();
@@ -1318,18 +1308,18 @@ public class Notepad extends javax.swing.JFrame {
                         t.select(t.getText().indexOf(s), t.getText().indexOf(s) + s.length());
                     } else
                         t.select(n, n + s.length());
-                    t.replaceRange(rt.getText(), t.getSelectionStart(), t.getSelectionEnd());
+                    t.replaceRange(s2, t.getSelectionStart(), t.getSelectionEnd());
                     n = t.getText().indexOf(s, (n + s.length())); // fromindexof
 
                     if (n < 0)
                         break;
                 }
             }
-        } else if (ft.getText().length() > 0 && t.getText().length() > 0 && rt.getText().length() > 0
-                && !matchcheck.isSelected()) {
+        } else if (ft.getText().length() > 0 && t.getText().length() > 0 && !matchcheck.isSelected()) {
             s = ft.getText().toLowerCase();
+
             if (!t.getText().contains(s))
-                JOptionPane.showMessageDialog(null, "Not Found");
+                JOptionPane.showMessageDialog(null, "Search key not found");
             while (true) {
                 t.requestFocus();
                 if (z == 0) {
@@ -1337,7 +1327,7 @@ public class Notepad extends javax.swing.JFrame {
                     t.select(t.getText().indexOf(s), t.getText().indexOf(s) + s.length());
                 } else
                     t.select(n, n + s.length());
-                t.replaceRange(rt.getText(), t.getSelectionStart(), t.getSelectionEnd());
+                t.replaceRange(s2, t.getSelectionStart(), t.getSelectionEnd());
                 n = t.getText().toLowerCase().indexOf(s, (n + s.length())); // fromindexof
 
                 if (n < 0)
@@ -1347,174 +1337,174 @@ public class Notepad extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Nothing to search and replace");
     }// event_replaceallActionPerformed
 
-    private void rtKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_rtKeyPressed
+    private void rtKeyPressed(java.awt.event.KeyEvent evt) {// event_rtKeyPressed
 
         z = 0;
         n = 0;
     }// event_rtKeyPressed
 
-    private void arialActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_arialActionPerformed
+    private void arialActionPerformed(java.awt.event.ActionEvent evt) {// event_arialActionPerformed
 
         st = "Arial";
         setFont();
     }// event_arialActionPerformed
 
-    private void algerianActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_algerianActionPerformed
+    private void algerianActionPerformed(java.awt.event.ActionEvent evt) {// event_algerianActionPerformed
 
         st = "Algerian";
         setFont();
     }// event_algerianActionPerformed
 
-    private void tnrActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_tnrActionPerformed
+    private void tnrActionPerformed(java.awt.event.ActionEvent evt) {// event_tnrActionPerformed
 
         st = "Times New Roman";
         setFont();
     }// event_tnrActionPerformed
 
-    private void italicsActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_italicsActionPerformed
+    private void italicsActionPerformed(java.awt.event.ActionEvent evt) {// event_italicsActionPerformed
 
         style = "i";
         setFont();
     }// event_italicsActionPerformed
 
-    private void bolditalicsActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_bolditalicsActionPerformed
+    private void bolditalicsActionPerformed(java.awt.event.ActionEvent evt) {// event_bolditalicsActionPerformed
 
         style = "bi";
         setFont();
     }// event_bolditalicsActionPerformed
 
-    private void size8ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_size8ActionPerformed
+    private void size8ActionPerformed(java.awt.event.ActionEvent evt) {// event_size8ActionPerformed
 
         size = 8;
         setFont();
     }// event_size8ActionPerformed
 
-    private void size9ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_size9ActionPerformed
+    private void size9ActionPerformed(java.awt.event.ActionEvent evt) {// event_size9ActionPerformed
 
         size = 9;
         setFont();
     }// event_size9ActionPerformed
 
-    private void size10ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_size10ActionPerformed
+    private void size10ActionPerformed(java.awt.event.ActionEvent evt) {// event_size10ActionPerformed
 
         size = 10;
         setFont();
     }// event_size10ActionPerformed
 
-    private void size11ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_size11ActionPerformed
+    private void size11ActionPerformed(java.awt.event.ActionEvent evt) {// event_size11ActionPerformed
 
         size = 11;
         setFont();
     }// event_size11ActionPerformed
 
-    private void size12ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_size12ActionPerformed
+    private void size12ActionPerformed(java.awt.event.ActionEvent evt) {// event_size12ActionPerformed
 
         size = 12;
         setFont();
     }// event_size12ActionPerformed
 
-    private void size14ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_size14ActionPerformed
+    private void size14ActionPerformed(java.awt.event.ActionEvent evt) {// event_size14ActionPerformed
 
         size = 14;
         setFont();
     }// event_size14ActionPerformed
 
-    private void size16ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_size16ActionPerformed
+    private void size16ActionPerformed(java.awt.event.ActionEvent evt) {// event_size16ActionPerformed
 
         size = 16;
         setFont();
     }// event_size16ActionPerformed
 
-    private void size18ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_size18ActionPerformed
+    private void size18ActionPerformed(java.awt.event.ActionEvent evt) {// event_size18ActionPerformed
 
         size = 18;
         setFont();
     }// event_size18ActionPerformed
 
-    private void size20ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_size20ActionPerformed
+    private void size20ActionPerformed(java.awt.event.ActionEvent evt) {// event_size20ActionPerformed
 
         size = 20;
         setFont();
     }// event_size20ActionPerformed
 
-    private void size24ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_size24ActionPerformed
+    private void size24ActionPerformed(java.awt.event.ActionEvent evt) {// event_size24ActionPerformed
 
         size = 24;
         setFont();
     }// event_size24ActionPerformed
 
-    private void size26ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_size26ActionPerformed
+    private void size26ActionPerformed(java.awt.event.ActionEvent evt) {// event_size26ActionPerformed
 
         size = 26;
         setFont();
     }// event_size26ActionPerformed
 
-    private void size28ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_size28ActionPerformed
+    private void size28ActionPerformed(java.awt.event.ActionEvent evt) {// event_size28ActionPerformed
 
         size = 28;
         setFont();
     }// event_size28ActionPerformed
 
-    private void size36ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_size36ActionPerformed
+    private void size36ActionPerformed(java.awt.event.ActionEvent evt) {// event_size36ActionPerformed
 
         size = 36;
         setFont();
     }// event_size36ActionPerformed
 
-    private void size48ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_size48ActionPerformed
+    private void size48ActionPerformed(java.awt.event.ActionEvent evt) {// event_size48ActionPerformed
 
         size = 48;
         setFont();
     }// event_size48ActionPerformed
 
-    private void size72ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_size72ActionPerformed
+    private void size72ActionPerformed(java.awt.event.ActionEvent evt) {// event_size72ActionPerformed
 
         size = 72;
         setFont();
     }// event_size72ActionPerformed
 
-    private void cambriaActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_cambriaActionPerformed
+    private void cambriaActionPerformed(java.awt.event.ActionEvent evt) {// event_cambriaActionPerformed
 
         st = "Cambria";
         setFont();
     }// event_cambriaActionPerformed
 
-    private void calibriActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_calibriActionPerformed
+    private void calibriActionPerformed(java.awt.event.ActionEvent evt) {// event_calibriActionPerformed
 
         st = "Calibri";
         setFont();
     }// event_calibriActionPerformed
 
-    private void verdanaActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_verdanaActionPerformed
+    private void verdanaActionPerformed(java.awt.event.ActionEvent evt) {// event_verdanaActionPerformed
 
         st = "Verdana";
         setFont();
     }// event_verdanaActionPerformed
 
-    private void segoeuiActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_segoeuiActionPerformed
+    private void segoeuiActionPerformed(java.awt.event.ActionEvent evt) {// event_segoeuiActionPerformed
 
         st = "Segoe UI";
         setFont();
     }// event_segoeuiActionPerformed
 
-    private void tahomaActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_tahomaActionPerformed
+    private void tahomaActionPerformed(java.awt.event.ActionEvent evt) {// event_tahomaActionPerformed
 
         st = "Tahoma";
         setFont();
     }// event_tahomaActionPerformed
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {// GEN-FIRST:event_formWindowOpened
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {// event_formWindowOpened
 
         t.setFont(f1);
     }// event_formWindowOpened
 
-    private void size13ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_size13ActionPerformed
+    private void size13ActionPerformed(java.awt.event.ActionEvent evt) {// event_size13ActionPerformed
 
         size = 13;
         setFont();
     }// event_size13ActionPerformed
 
-    private void saveActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_saveActionPerformed
+    private void saveActionPerformed(java.awt.event.ActionEvent evt) {// event_saveActionPerformed
 
         if (filename == null)
             savefile();
@@ -1535,7 +1525,7 @@ public class Notepad extends javax.swing.JFrame {
         }
     }// event_saveActionPerformed
 
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {// GEN-FIRST:event_formWindowClosing
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {// event_formWindowClosing
 
         int r = JOptionPane.showConfirmDialog(null,
                 "Do you want to exit the application? All unsaved changes will be lost.", "Exit",
@@ -1544,7 +1534,7 @@ public class Notepad extends javax.swing.JFrame {
             System.exit(0);
     }// event_formWindowClosing
 
-    private void dateandtimeActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_dateandtimeActionPerformed
+    private void dateandtimeActionPerformed(java.awt.event.ActionEvent evt) {// event_dateandtimeActionPerformed
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy h:mm a");
         LocalDateTime now = LocalDateTime.now();
@@ -1557,34 +1547,7 @@ public class Notepad extends javax.swing.JFrame {
     UndoManager um = new UndoManager();
 
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        // <editor-fold defaultstate="collapsed" desc=" Look and feel setting code
-        // (optional) ">
-        /*
-         * If Nimbus (introduced in Java SE 6) is not available, stay with the default
-         * look and feel. For details see
-         * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Notepad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Notepad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Notepad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Notepad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        // </editor-fold>
-        // </editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Notepad().setVisible(true);
@@ -1592,7 +1555,7 @@ public class Notepad extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify
+    // Variables declaration
     private javax.swing.JMenuItem arial;
     private javax.swing.JMenuItem bold;
     private javax.swing.JMenuItem bolditalics;
@@ -1608,7 +1571,7 @@ public class Notepad extends javax.swing.JFrame {
     private javax.swing.JTextField ft;
     private javax.swing.JMenu help;
     private javax.swing.JMenuItem italics;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel Findlab;
     private javax.swing.JMenu format;
     private javax.swing.JMenu bgc;
     private javax.swing.JMenu fontcol;
