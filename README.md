@@ -14,20 +14,20 @@ I coded this during the lockdown as a part of my college project.
 
 To deploy this project run this in a terminal
 
-javac notepad.java
+javac Notepad.java
 
-java notepad
+java Notepad
 
 ## Features
 
  Displays the current file name on the title bar.
  
- File tab- New File, Open File, Save, Save As, Print, Close.
+ File tab - New File, Open File, Save, Save As, Print, Close.
  
- Edit tab- Copy, Cut, Paste, Undo, Redo, Find, Replace/Replace All, Date/Time.
+ Edit tab - Copy, Cut, Paste, Undo, Redo, Find, Replace/Replace All, Date/Time.
  
- Format tab- Wrap Text, Font, Font Style, Font Size, Background Color, Font Color.
+ Format tab - Wrap Text, Font, Font Style, Font Size, Background Color, Font Color.
  
- Help- Contact Me, About.
+ Help tab - Contact Me, About.
  
  
